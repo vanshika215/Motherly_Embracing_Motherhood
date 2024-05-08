@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptune Post Query</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+                body
+                {
+                    background: rgb(242, 241, 241);
+                }
+                /* .h{
+                    position: fixed;
+                    width: 100%;
+                   overflow: visible;
+                } */
+                .ls{
+                    position: fixed;
+                    border: 1px solid skyblue;
+                    border-radius: 5px;
+                    height: 100%;
+                    width: 180px;
+                    margin-top: 65px;
+                    margin-left: 6px;
+                    background-color: white;
+                    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+                    
+                }
+                .ls a{
+                    text-decoration: none;
+                    color: white;
+                }
+                .rs{
+                    position: fixed;
+                    border: 1px solid skyblue;
+                    border-radius: 5px;
+                    right: 0;
+                    height: 100%;
+                    width: 180px;
+                    margin-top: 65px;
+                    margin-right: 6px;
+                    background-color: white;
+                    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+                    padding: 8px;
+                }
+                .mainc{
+                    position: absolute;
+                    top: 10%;
+                    left: 16%;
+                    right: 16%;
+                }
+                ul li:hover{
+      background-color: black;
+      border-radius: 4px;
+    }
+    .lsf{
+        background-color: rgb(109, 205, 243);
+        border: transparent;
+        border-radius: 50px;
+        height: 50px;
+        margin: 6px;
+        margin-top: 25px;
+        padding: 12px;
+        padding-left: 28px;
+        color: white;
+    }
+    .lss{
+        background-color: rgb(109, 205, 243);
+        border: transparent;
+        border-radius: 50px;
+        height: 50px;
+        margin: 6px;
+        margin-top: 25px;
+        padding: 12px;
+        padding-left: 18px;
+        color: white;
+        
+    }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-info">
+        <div class="container-fluid">
+            <h5 style="color: white; margin: 5px;"><i>Motherly</i></h5>
+            <ul class="navbar-nav navbar-right">
+                
+                <li class="nav-item"><a class="nav-link" href="blog" style="color: white;">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="" style="color: white; ">Predict</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url "addquery" %}" style="color: white; ">Add Query</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <div class="ls">
+            <h4 style="margin: 5px;">Our Features</h4>
+           <div class="lsf"> <h5><a href="knowscore">Health stat</a></h5></div>
+           <div class="lss"> <h5><a href="">PPD Help</a></h5></div>
+           <div class="lsf"> <h5><a href="/blog">Blog</a></h5></div>
+
+           <h6 style="color: red; margin: 9px; margin-top: 40px;">We provide you the most satisfied solutions..</h6>
+        </div>
+        <div class="mainc">
+            {% for pq in queries reversed %}
+                        <div class="box bg-white p-2 m-2 border border-primary" style="border-radius: 6px;">
+                            <h2>{{pq.name}}</h2>
+                            <hr>
+                            <h6>{{pq.created}}</h6>
+                            <p>{{pq.body}}</p>
+                            <div class="border border-info m-0" >
+                                <a href="pcomment/{{pq.id}}" class="ps-5" style="text-decoration: none;">Comment</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+        </div>
+        <div class="rs">
+            <hr>
+            <h4>About the Community...</h4>
+            <p>Here you post your query related to your health conditions or any Symptoms you are suffering then experts provide different soluntion advice by comment.</p>
+            <hr>
+            <h6 style="color: blue;">Don't be confused ask your doubts related to health issues at <i>Motherly</i> and get different advices from many people, then choose the best!!</h6>
+        </div>
+    </div>
+</body>
+</html>

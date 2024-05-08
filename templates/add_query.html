@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center; margin-top: 10%;">Add your Query</h1>
+<hr>
+<div class="form-group m-5" style="font-size: medium;">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button class="btn-lg btn-secondary" style="color: white;">Post</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+  {% block content %}
+  {% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<h1 style="margin-top: 10%; text-align: center;">check your Diet Nutritions</h1>
+  <hr>
+<div class="container-fluid">
+    <div class="row justify-content-center" style="text-align: center; font-size: medium;">
+        <div class="col-8 border shadow p-4 m-4">
+            <form action="dietres" method="POST">
+                {% csrf_token %}
+                
+                  <div class="form-group">
+                    <label for="pwd">Enter your meal:</label>
+                    <input type="text" class="form-control" id="pwd" name="query">
+                  </div>
+                  
+                  <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+  </div>
+
+  {% endblock content %}

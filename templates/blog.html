@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+  {% block content %}
+
+<h1 style="margin-top: 12%; text-align: center; margin-bottom: 2%;">Motherly Blogs</h1>
+<div class="container-fluid">
+    <div class="row p-3">
+        {% for p in bpost reversed%}
+        <div class="col-12 m-2 bg-white border border-radius">
+            <a style="text-decoration: none; color: black;" href="/post/{{p.slug}}">
+                <h1>{{p.title|truncatewords:10}}</h1>
+                <h4>{{p.body|truncatechars:20|safe}}</h4>
+               </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+  {% endblock content %}
